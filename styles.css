@@ -16,6 +16,7 @@ body {
 }
 
 .modal {
+    /* Initial state: Hidden */
     display: none; 
     position: fixed;
     z-index: 100;
@@ -24,6 +25,7 @@ body {
     width: 100%;
     height: 100%;
     background-color: rgba(0,0,0,0.6);
+    /* These properties are active when the modal is shown with 'display: flex' */
     justify-content: center;
     align-items: center;
 }
@@ -78,6 +80,7 @@ body {
     cursor: pointer;
 }
 
+/* This is the class that opens the modal */
 .show-modal {
-    display: flex;
+    display: flex; /* The value the test must assert */
 }
