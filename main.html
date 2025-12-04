@@ -1,17 +1,138 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>CSS Modal</title>
-	<link rel="stylesheet" href="styles.css">
+    <title>CSS-Only Modal</title>
+    <style>
+        /* ---------------------------------- */
+        /* Basic Setup & Button */
+        /* ---------------------------------- */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            background-color: #f4f4f4;
+        }
+
+        #openModal {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none; /* Remove underline from the anchor link */
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        /* ---------------------------------- */
+        /* Modal Base Styles */
+        /* ---------------------------------- */
+
+        .modal {
+            /* Hidden by default */
+            visibility: hidden; 
+            opacity: 0;
+            transition: opacity 0.3s, visibility 0.3s;
+            
+            /* Stay in place */
+            position: fixed; 
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            /* Gray overlay */
+            background-color: rgba(0, 0, 0, 0.6);
+            /* Center the content */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Target the modal when its ID matches the URL hash (i.e., when the button is clicked) */
+        .modal:target {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* The invisible area outside the modal used to close it */
+        .modal-background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        /* Modal Content Box */
+        .modal-content {
+            background-color: #ffffff;
+            padding: 0;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            position: relative; /* Needed to position the content above the background */
+            z-index: 101; /* Higher than modal-background */
+        }
+
+        /* ---------------------------------- */
+        /* Modal Header & Body */
+        /* ---------------------------------- */
+
+        .modal-header {
+            padding: 5px 15px;
+            background-color: #4CAF50; /* Green background */
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        /* Close Button (x) */
+        .close-modal {
+            color: #fff;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none; /* Remove underline from the anchor link */
+            transition: color 0.3s;
+            line-height: 1; /* Ensure 'x' is vertically centered */
+        }
+
+        .close-modal:hover,
+        .close-modal:focus {
+            color: #f00; /* Red color on hover */
+        }
+
+        .modal-body {
+            padding: 10px 15px;
+            color: #333;
+        }
+    </style>
 </head>
+
 <body>
-	<button id="openModal">Open Modal</button>
+    <a href="#myModal" id="openModal">Open Modal</a>
 
     <div id="myModal" class="modal">
+        
+        <a href="#" class="modal-background"></a>
+
         <div class="modal-content">
             <div class="modal-header">
                 <h2>Modal Header</h2>
-                <span class="close-modal">&times;</span>
+                <a href="#" class="close-modal">&times;</a>
             </div>
             <div class="modal-body">
                 <p>Modal Body Content</p>
@@ -19,6 +140,6 @@
         </div>
     </div>
 
-	<script type="text/javascript" src="./script.js"></script>
 </body>
+
 </html>
